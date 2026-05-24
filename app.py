@@ -19,7 +19,7 @@ from pathlib import Path
 
 st.set_page_config(
     page_title="CASMU | Análisis de Medios",
-    page_icon="📊",
+    page_icon="C",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -65,11 +65,6 @@ def check_password():
                 text-align: center;
                 box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
                 backdrop-filter: blur(10px);
-            }
-            .login-icon {
-                font-size: 4rem;
-                margin-bottom: 1rem;
-                display: block;
             }
             .login-title {
                 font-size: 2.2rem;
@@ -130,39 +125,20 @@ def check_password():
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             st.markdown("""
-            <div class="login-wrapper">
-                <div class="login-card">
-                    <span class="login-icon">📊</span>
-                    <h1 class="login-title">CASMU <span class="login-brand">Media Analyzer</span></h1>
-                    <p class="login-subtitle">
-                        Plataforma de inteligencia mediática para monitorear
-                        la presencia de CASMU en medios uruguayos
-                    </p>
-
-                    <div class="login-divider"></div>
-
-                    <div class="login-features">
-                        <div class="login-feature">
-                            <span class="login-feature-icon">🔍</span>
-                            <span>Monitoreo de 5 medios uruguayos en tiempo real</span>
-                        </div>
-                        <div class="login-feature">
-                            <span class="login-feature-icon">🧠</span>
-                            <span>Análisis de sentimiento con NLP especializado</span>
-                        </div>
-                        <div class="login-feature">
-                            <span class="login-feature-icon">📈</span>
-                            <span>Datos históricos desde 2022 con tendencias</span>
-                        </div>
-                        <div class="login-feature">
-                            <span class="login-feature-icon">📧</span>
-                            <span>Reportes semanales automáticos por email</span>
-                        </div>
-                    </div>
-
-                    <div class="login-divider"></div>
-                </div>
-            </div>
+<div class="login-wrapper">
+<div class="login-card">
+<h1 class="login-title">CASMU <span class="login-brand">Media Analyzer</span></h1>
+<p class="login-subtitle">Plataforma de inteligencia mediática para monitorear la presencia de CASMU en medios uruguayos</p>
+<div class="login-divider"></div>
+<div class="login-features">
+<div class="login-feature"><span class="login-feature-icon">1</span><span>Monitoreo de 5 medios uruguayos en tiempo real</span></div>
+<div class="login-feature"><span class="login-feature-icon">2</span><span>Análisis de sentimiento con NLP especializado</span></div>
+<div class="login-feature"><span class="login-feature-icon">3</span><span>Datos históricos desde 2022 con tendencias</span></div>
+<div class="login-feature"><span class="login-feature-icon">4</span><span>Reportes semanales automáticos por email</span></div>
+</div>
+<div class="login-divider"></div>
+</div>
+</div>
             """, unsafe_allow_html=True)
 
             st.text_input(
@@ -174,13 +150,9 @@ def check_password():
             )
 
             if "password_correct" in st.session_state and not st.session_state["password_correct"]:
-                st.error("❌ Contraseña incorrecta")
+                st.error("Contraseña incorrecta")
 
-            st.markdown("""
-            <p class="login-footer">
-                Herramienta desarrollada para análisis interno de CASMU
-            </p>
-            """, unsafe_allow_html=True)
+            st.markdown('<p class="login-footer">Herramienta desarrollada para análisis interno de CASMU</p>', unsafe_allow_html=True)
 
         return False
 
