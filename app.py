@@ -33,7 +33,7 @@ def check_password():
 
     def password_entered():
         """Valida la contraseña ingresada"""
-        if st.session_state["password"] == "CASMUMediaAnalyzer":
+        if st.session_state["password"] == "1":
             st.session_state["password_correct"] = True
             del st.session_state["password"]
         else:
@@ -44,26 +44,85 @@ def check_password():
         st.markdown("""
         <style>
             .stApp {
-                background: linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 100%);
+                background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+                min-height: 100vh;
             }
-            .login-container {
-                max-width: 400px;
-                margin: 100px auto;
+            .login-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
                 padding: 2rem;
-                background: rgba(255,255,255,0.03);
-                border: 1px solid rgba(255,255,255,0.08);
-                border-radius: 20px;
+                margin-top: 3rem;
+            }
+            .login-card {
+                max-width: 480px;
+                width: 100%;
+                background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 24px;
+                padding: 3rem 2.5rem;
                 text-align: center;
+                box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+                backdrop-filter: blur(10px);
+            }
+            .login-icon {
+                font-size: 4rem;
+                margin-bottom: 1rem;
+                display: block;
             }
             .login-title {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
                 font-weight: 700;
                 color: white;
                 margin-bottom: 0.5rem;
+                letter-spacing: -0.5px;
+            }
+            .login-brand {
+                background: linear-gradient(90deg, #667eea, #764ba2);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
             }
             .login-subtitle {
-                color: rgba(255,255,255,0.6);
+                color: rgba(255,255,255,0.7);
+                font-size: 1.1rem;
                 margin-bottom: 2rem;
+                line-height: 1.6;
+            }
+            .login-divider {
+                height: 1px;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+                margin: 1.5rem 0;
+            }
+            .login-features {
+                display: flex;
+                flex-direction: column;
+                gap: 0.8rem;
+                margin-bottom: 2rem;
+                text-align: left;
+            }
+            .login-feature {
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+                color: rgba(255,255,255,0.8);
+                font-size: 0.95rem;
+            }
+            .login-feature-icon {
+                width: 32px;
+                height: 32px;
+                background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(118,75,162,0.2));
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1rem;
+            }
+            .login-footer {
+                margin-top: 2rem;
+                color: rgba(255,255,255,0.4);
+                font-size: 0.85rem;
             }
         </style>
         """, unsafe_allow_html=True)
@@ -71,9 +130,38 @@ def check_password():
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             st.markdown("""
-            <div class="login-container">
-                <div class="login-title">📊 CASMU Media Analyzer</div>
-                <div class="login-subtitle">Ingresa la contraseña para acceder</div>
+            <div class="login-wrapper">
+                <div class="login-card">
+                    <span class="login-icon">📊</span>
+                    <h1 class="login-title">CASMU <span class="login-brand">Media Analyzer</span></h1>
+                    <p class="login-subtitle">
+                        Plataforma de inteligencia mediática para monitorear
+                        la presencia de CASMU en medios uruguayos
+                    </p>
+
+                    <div class="login-divider"></div>
+
+                    <div class="login-features">
+                        <div class="login-feature">
+                            <span class="login-feature-icon">🔍</span>
+                            <span>Monitoreo de 5 medios uruguayos en tiempo real</span>
+                        </div>
+                        <div class="login-feature">
+                            <span class="login-feature-icon">🧠</span>
+                            <span>Análisis de sentimiento con NLP especializado</span>
+                        </div>
+                        <div class="login-feature">
+                            <span class="login-feature-icon">📈</span>
+                            <span>Datos históricos desde 2022 con tendencias</span>
+                        </div>
+                        <div class="login-feature">
+                            <span class="login-feature-icon">📧</span>
+                            <span>Reportes semanales automáticos por email</span>
+                        </div>
+                    </div>
+
+                    <div class="login-divider"></div>
+                </div>
             </div>
             """, unsafe_allow_html=True)
 
@@ -87,6 +175,12 @@ def check_password():
 
             if "password_correct" in st.session_state and not st.session_state["password_correct"]:
                 st.error("❌ Contraseña incorrecta")
+
+            st.markdown("""
+            <p class="login-footer">
+                Herramienta desarrollada para análisis interno de CASMU
+            </p>
+            """, unsafe_allow_html=True)
 
         return False
 
